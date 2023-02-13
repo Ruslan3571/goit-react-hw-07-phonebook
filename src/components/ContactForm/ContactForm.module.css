@@ -10,14 +10,20 @@
   display: flex;
   justify-content: space-between;
 }
+.contactInput {
+  border-radius: 5px;
+  border-color: inherit;
+}
 
 .btn {
   padding: 5px;
-  background-color: #f0f0f0;
   font-size: 17px;
   border-color: inherit;
   border: inherit;
   border-radius: 10px;
+  background-color: white;
+
+  border-color: inherit;
 }
 .btn:hover {
   background-color: green;

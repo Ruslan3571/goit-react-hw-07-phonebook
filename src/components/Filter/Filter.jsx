@@ -11,7 +11,12 @@ export function Filter() {
   return (
     <div className={s.filterBlock}>
       <div>Find contacts by name</div>
-      <input type="text" value={filter} onChange={handleFilter} />
+      <input
+        className={s.filterInput}
+        type="text"
+        value={filter}
+        onChange={handleFilter}
+      />
     </div>
   );
 }

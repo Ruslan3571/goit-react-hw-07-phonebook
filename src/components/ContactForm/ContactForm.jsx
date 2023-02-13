@@ -45,6 +45,7 @@ export function ContactForm() {
         <label htmlFor="" className={s.contactLabel}>
           Name
           <input
+            className={s.contactInput}
             type="text"
             name="name"
             onChange={handleChange}
@@ -57,6 +58,7 @@ export function ContactForm() {
         <label htmlFor="" className={s.contactLabel}>
           Number
           <input
+            className={s.contactInput}
             type="tel"
             name="number"
             onChange={handleChange}
