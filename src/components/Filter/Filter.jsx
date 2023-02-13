@@ -1,5 +1,6 @@
 import { getFilter } from 'components/redux/contactSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import s from '../Filter/Filter.module.css';
 
 export function Filter() {
   const dispatch = useDispatch();
@@ -8,11 +9,9 @@ export function Filter() {
     dispatch(getFilter(event.currentTarget.value.toLowerCase()));
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <label htmlFor="">
-        Find contacts by name
-        <input type="text" value={filter} onChange={handleFilter} />
-      </label>
+    <div className={s.filterBlock}>
+      <div>Find contacts by name</div>
+      <input type="text" value={filter} onChange={handleFilter} />
     </div>
   );
 }

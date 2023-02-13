@@ -1,30 +1,63 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { addContact, deleteContact, fetchContacts } from './operations';
 
 const contactSlice = createSlice({
   name: 'contacts',
-  initialState: { contacts: [], filter: '' },
+  initialState: {
+    filter: '',
+    contacts: [],
+    error: null,
+    isLoading: false,
+  },
 
   reducers: {
-    addContact: {
-      reducer(state, action) {
-        state.contacts.unshift(action.payload);
-      },
-      prepare(newContact) {
-        return { payload: { ...newContact, id: nanoid() } };
-      },
+    getFilter(state, action) {
+      state.filter = action.payload;
     },
-    getFilter: {
-      reducer(state, action) {
-        console.log(action.payload);
-        state.filter = action.payload;
-      },
+  },
+
+  extraReducers: {
+    [fetchContacts.pending](state) {
+      state.isLoading = true;
+    },
+    [fetchContacts.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.contacts = action.payload;
+    },
+    [fetchContacts.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
     },
 
-    deleteContact: (state, action) => {
+    [addContact.pending](state) {
+      state.isLoading = true;
+    },
+    [addContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.contacts.unshift(action.payload);
+    },
+    [addContact.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    [deleteContact.pending](state) {
+      state.isLoading = true;
+    },
+    [deleteContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
       state.contacts = state.contacts.filter(el => el.id !== action.payload.id);
+    },
+    [deleteContact.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
 });
 
-export const { addContact, deleteContact, getFilter } = contactSlice.actions;
 export default contactSlice.reducer;
+export const contactsReducer = contactSlice.reducer;
+export const { getFilter } = contactSlice.actions;

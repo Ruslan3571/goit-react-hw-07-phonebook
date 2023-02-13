@@ -4,9 +4,22 @@
   flex-direction: column;
   text-align: center;
   row-gap: 10px;
-  margin: 20px auto 0 auto;
+  margin: 20px auto 20px auto;
 }
 .contactLabel {
   display: flex;
   justify-content: space-between;
+}
+
+.btn {
+  padding: 5px;
+  background-color: #f0f0f0;
+  font-size: 17px;
+  border-color: inherit;
+  border: inherit;
+  border-radius: 10px;
+}
+.btn:hover {
+  background-color: green;
+  color: white;
 }

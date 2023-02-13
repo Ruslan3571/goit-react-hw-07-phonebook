@@ -1,13 +1,35 @@
 .contactList {
-  width: 250px;
+  width: 280px;
+  margin: 0 auto;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   text-align: center;
   row-gap: 10px;
-  margin: 20px auto 0 auto;
 }
 
 .contactItem {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  padding: 5px;
+  background-color: #f0f0f0;
+  font-size: 17px;
+  border-color: inherit;
+  border: inherit;
+  border-radius: 10px;
+}
+
+.button:hover {
+  background-color: red;
+  color: white;
+}
+.paragraf {
+  margin: 0;
+  padding: 10px 0 10px;
+  text-align: center;
+  font-style: oblique;
 }

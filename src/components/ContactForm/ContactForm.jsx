@@ -1,15 +1,16 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'components/redux/contactSlice';
+
 import s from './ContactForm.module.css';
 import { Notify } from 'notiflix';
+import { selectContacts } from 'components/redux/selectors';
+import { addContact } from 'components/redux/operations';
 
 export function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(selectContacts);
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -65,12 +66,11 @@ export function ContactForm() {
             required
           />
         </label>
-        <button type="submit">Add contact</button>
+
+        <button className={s.btn} type="submit">
+          Add contact
+        </button>
       </form>
     </>
   );
 }
-
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func,
-};
